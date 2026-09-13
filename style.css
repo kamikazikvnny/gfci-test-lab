@@ -1145,7 +1145,34 @@ box-shadow: 0 0 0 3px #32c5ff;
 
 
 
+/* =========================================================
+   CABLE MENU — MOBILE SCROLL
+========================================================= */
 
+@media (max-width: 600px) {
+
+    #cableMenu {
+        max-height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        box-sizing: border-box;
+    }
+
+    #cableMenu::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    #cableMenu::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    #cableMenu::-webkit-scrollbar-track {
+        background: #222;
+    }
+
+}
 
 
 
