@@ -1,0 +1,393 @@
+<!DOCTYPE html> <html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>GFCI Test Lab</title> 
+<link rel="stylesheet" href="style.css"> 
+</head> 
+
+<body> 
+<header class="site-header"> <div class="header-content">
+<h1>GFCI Test Lab</h1>
+
+<p>Virtual Electrical Training Lab</p>
+</div> </header> <main class="lab-container"> 
+
+
+
+
+<section class="lab-board">
+
+   
+
+
+
+
+
+
+
+<div class="lab-title">
+
+    <h2>GFCI Branch Circuit Exercise</h2>
+
+    <p>Build and test the circuit.</p>
+
+</div>
+
+<!-- Work Area Opening Div -->
+<div class="work-area">
+
+     <!-- UNDO / REDO CONTROLS -->
+<div class="history-controls">
+
+    <button id="undoButton" class="history-button">UNDO</button>
+    <button id="redoButton" class="history-button">REDO</button>
+    <button id="resetButton" class="history-button">RESET</button>
+
+</div>
+
+    <!-- CABLE LAYER -->
+<div class="cable-layer" id="cableLayer"></div>
+
+
+
+<!-- jbox1 Opening Div -->
+    <div class="electrical-box" id="jbox1">
+
+        <!-- jbox1 -->
+        <div class="box-label"> jbox1 </div>
+
+        <!-- jbox1 KNOCKOUTS -->
+        <div class="knockout knockout-top"></div>
+
+        <div class="knockout knockout-bottom"></div>
+
+        <div class="knockout knockout-left"></div>
+
+        <div class="knockout knockout-right"></div>
+
+        <!-- GFCI Opening Div -->
+        <div class="gfci">
+
+            <!-- GFCI FACE Opening Div -->
+            <div class="gfci-face">
+
+                <!-- GFCI LABEL -->
+                <div class="gfci-label">
+                    GFCI
+                </div>
+
+                <!-- TOP RECEPTACLE -->
+                <div class="gfci-receptacle gfci-top-receptacle">
+
+                    <div class="slot slot-left"></div>
+
+                    <div class="slot slot-right"></div>
+
+                    <div class="ground-slot"></div>
+
+                </div>
+
+                <!-- BOTTOM RECEPTACLE -->
+                <div class="gfci-receptacle gfci-bottom-receptacle">
+
+                    <div class="slot slot-left"></div>
+
+                    <div class="slot slot-right"></div>
+
+                    <div class="ground-slot"></div>
+
+                </div>
+
+                <!-- TEST BUTTON -->
+                <button class="gfci-button test-button">
+                    TEST
+                </button>
+
+                <!-- RESET BUTTON -->
+                <button class="gfci-button reset-button">
+                    RESET
+                </button>
+
+                <!-- GFCI MOUNTING SCREWS -->
+                <div class="gfci-screw gfci-screw-top"></div>
+
+                <div class="gfci-screw gfci-screw-bottom"></div>
+
+            <!-- GFCI FACE CLOSING DIV -->
+            </div>
+
+        <!-- GFCI CLOSING DIV -->
+        </div>
+
+<!-- jbox1 Closing Div --></div>
+
+
+
+
+
+<!-- jbox2 Opening Div -->
+    <div class="electrical-box" id="jbox2">
+
+        <!-- BOX 2 LABEL -->
+        <div class="box-label">
+            jbox2
+        </div>
+
+        <!-- BOX 2 KNOCKOUTS -->
+        <div class="knockout knockout-top"></div>
+
+        <div class="knockout knockout-bottom"></div>
+
+        <div class="knockout knockout-left"></div>
+
+        <div class="knockout knockout-right"></div>
+
+        <!-- SINGLE-POLE SWITCH Opening Div -->
+        <div class="switch">
+
+            <!-- SWITCH FACE Opening Div -->
+            <div class="switch-face">
+
+                <!-- SWITCH TOGGLE -->
+                <div class="switch-toggle"></div>
+
+                <!-- SWITCH MOUNTING SCREWS -->
+                <div class="switch-screw switch-screw-top"></div>
+
+                <div class="switch-screw switch-screw-bottom"></div>
+
+            <!-- SWITCH FACE CLOSING DIV -->
+            </div>
+        <!-- SINGLE-POLE SWITCH Closing Div -->
+        </div>
+<!-- BOX 2 CLOSING DIV --></div>
+
+
+
+
+
+
+
+
+<!-- jbox3 Opening Div -->
+    <div class="electrical-box" id="jbox3">
+
+        <!-- jbox3 LABEL -->
+        <div class="box-label">
+            jbox3
+        </div>
+
+        <!-- jbox3 KNOCKOUTS -->
+        <div class="knockout knockout-top"></div>
+
+        <div class="knockout knockout-bottom"></div>
+
+        <div class="knockout knockout-left"></div>
+
+        <div class="knockout knockout-right"></div>
+
+
+        <!-- LIGHT FIXTURE Opening Div -->
+        <div class="light-fixture">
+
+            <!-- LIGHT FIXTURE FACE Opening Div -->
+            <div class="light-fixture-face">
+            
+                <!-- Lamp-Socket -->
+                <div class="lamp-socket"></div>
+
+                <!-- LIGHT BULB -->
+                <div class="light-bulb"></div>
+
+            <!-- LIGHT FIXTURE FACE Closing Div -->
+            </div>
+
+        <!-- LIGHT FIXTURE Closing Div -->
+        </div>
+
+    <!-- jbox3 CLOSING DIV -->
+    </div>
+
+
+
+
+
+<!-- jbox4 Opening Div -->
+<div class="electrical-box" id="jbox4">
+
+        <!-- jbox4 LABEL -->
+        <div class="box-label">
+            jbox4
+        </div>
+
+        <!-- jbox4 KNOCKOUTS -->
+        <div class="knockout knockout-top"></div>
+
+        <div class="knockout knockout-bottom"></div>
+
+        <div class="knockout knockout-left"></div>
+
+        <div class="knockout knockout-right"></div>
+
+        <!-- DUPLEX RECEPTACLE -->
+        <div class="duplex-receptacle">
+
+            <!-- DUPLEX FACE -->
+            <div class="duplex-face">
+
+            <!-- TOP RECEPTACLE -->
+            <div class="duplex-opening duplex-top-opening">
+                <div class="duplex-slot slot-left"></div>
+                <div class="duplex-slot slot-right"></div>
+                <div class="duplex-ground"></div>
+            </div>
+
+            <!-- BOTTOM RECEPTACLE -->
+            <div class="duplex-opening duplex-bottom-opening">
+                <div class="duplex-slot slot-left"></div>
+                <div class="duplex-slot slot-right"></div>
+                <div class="duplex-ground"></div>
+            </div>
+
+            <!-- MOUNTING SCREWS -->
+            <div class="duplex-screw"></div>
+        </div>
+
+</div>
+<!-- jbox4 Closing Div --></div>
+
+
+
+
+
+<!-- jbox5 Opening Div -->
+<div class="electrical-box" id="jbox5">
+
+    <!-- jbox5 LABEL -->
+    <div class="box-label">
+            jbox5
+    </div>
+
+    <!-- jbox5 KNOCKOUTS -->
+    <div class="knockout knockout-top"></div>
+
+    <div class="knockout knockout-bottom"></div>
+
+    <div class="knockout knockout-left"></div>
+
+    <div class="knockout knockout-right"></div>
+
+<!-- DUPLEX RECEPTACLE -->
+        <div class="duplex-receptacle">
+
+        <!-- DUPLEX FACE -->
+        <div class="duplex-face">
+
+        <!-- TOP RECEPTACLE -->
+        <div class="duplex-opening duplex-top-opening">
+            <div class="duplex-slot slot-left"></div>
+            <div class="duplex-slot slot-right"></div>
+            <div class="duplex-ground"></div>
+        </div>
+
+        <!-- BOTTOM RECEPTACLE -->
+        <div class="duplex-opening duplex-bottom-opening">
+            <div class="duplex-slot slot-left"></div>
+            <div class="duplex-slot slot-right"></div>
+            <div class="duplex-ground"></div>
+        </div>
+
+        <!-- MOUNTING SCREWS -->
+        <div class="duplex-screw duplex-screw-top"></div>
+        <div class="duplex-screw duplex-screw-bottom"></div>
+    </div>
+
+</div>
+
+
+<!-- jbox5 CLOSING DIV --></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CABLE MENU Opening Div --> <div class="cable-menu" id="cableMenu">
+
+
+    <!-- CABLE MENU TITLE -->
+    <div class="cable-menu-title">
+        Cable Types
+    </div>
+
+    <!-- 14/2 NMB -->
+    <button class="cable-option" data-cable="14-2-nmb">
+        14/2 — NM-B Cable
+    </button>
+
+    <!-- 14/3 NMB -->
+    <button class="cable-option" data-cable="14-3-nmb">
+        14/3 — NM-B Cable
+    </button>
+
+    <!-- 12/2 NMB -->
+    <button class="cable-option" data-cable="12-2-nmb">
+        12/2 — NM-B Cable
+    </button>
+
+    <!-- 12/3 NMB -->
+    <button class="cable-option" data-cable="12-3-nmb">
+        12/3 — NM-B Cable
+    </button>
+
+    <!-- 10/2 NMB -->
+    <button class="cable-option" data-cable="10-2-nmb">
+        10/2 — NM-B Cable
+    </button>
+
+    <!-- 10/3 NMB -->
+    <button class="cable-option" data-cable="10-3-nmb">
+        10/3 — NM-B Cable
+    </button>
+
+    <!-- THHN -->
+    <button class="cable-option" data-cable="thhn">
+        THHN — Single Wire
+    </button>
+
+    <!-- THWN -->
+    <button class="cable-option" data-cable="thwn">
+        THWN — Single Wire
+    </button>
+
+    <!-- REMOVE CABLE -->
+    <button class="cable-option cable-remove" data-cable="remove">
+        Remove Cable
+    </button>
+
+<!-- CABLE MENU CLOSING DIV -->
+</div>
+
+
+
+
+</section> 
+
+</main> 
+<footer class="site-footer"> <p>GFCI Test Lab</p> </footer> 
+<script src="script.js"></script> 
+</body> 
+</html>
