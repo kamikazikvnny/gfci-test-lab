@@ -211,6 +211,14 @@ if (resetButton) {
         const workArea =
             document.querySelector(".work-area");
 
+
+
+
+
+
+
+
+
         if (!cableLayer || !workArea) return;
 
         const workAreaRect =
@@ -264,6 +272,15 @@ cable.classList.add(
     "installed-cable",
     cableType
 );
+
+/* Store connected knockouts */
+cable.knockout1 = knockout1;
+cable.knockout2 = knockout2;
+
+
+
+
+
 
 
         /* Position and rotate cable */
@@ -370,6 +387,86 @@ cable.addEventListener("click", (event) => {
 );
 
 return cable;
+
+}
+/* =====================================================
+   UPDATE CABLE POSITION
+===================================================== */
+
+function updateCablePosition(cable) {
+
+    const knockout1 = cable.knockout1;
+    const knockout2 = cable.knockout2;
+
+    const workArea =
+        document.querySelector(".work-area");
+
+    if (!knockout1 || !knockout2 || !workArea) {
+        return;
+    }
+
+    const workAreaRect =
+        workArea.getBoundingClientRect();
+
+    const rect1 =
+        knockout1.getBoundingClientRect();
+
+    const rect2 =
+        knockout2.getBoundingClientRect();
+
+
+    /* Get knockout center points */
+
+    const x1 =
+        rect1.left +
+        rect1.width / 2 -
+        workAreaRect.left;
+
+    const y1 =
+        rect1.top +
+        rect1.height / 2 -
+        workAreaRect.top;
+
+    const x2 =
+        rect2.left +
+        rect2.width / 2 -
+        workAreaRect.left;
+
+    const y2 =
+        rect2.top +
+        rect2.height / 2 -
+        workAreaRect.top;
+
+
+    /* Calculate cable length */
+
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+
+    const length =
+        Math.sqrt(dx * dx + dy * dy);
+
+
+    /* Calculate cable angle */
+
+    const angle =
+        Math.atan2(dy, dx) *
+        (180 / Math.PI);
+
+
+    /* Update cable */
+
+    cable.style.left =
+        `${x1}px`;
+
+    cable.style.top =
+        `${y1}px`;
+
+    cable.style.width =
+        `${length}px`;
+
+    cable.style.transform =
+        `rotate(${angle}deg)`;
 
 }
 
@@ -535,22 +632,12 @@ recordHistory(
 
 );
 
-
-
-
-
-
-
-
-
-
                 firstKnockout = null;
                 selectedCableType = null;
 
 
             
 /* Remove connection hints */
-
 knockouts.forEach((item) => {
 
     item.classList.remove(
@@ -558,14 +645,6 @@ knockouts.forEach((item) => {
     );
 
 });
-
-
-
-
-
-
-
-
 
 
                 if (cableMenu) {
@@ -606,6 +685,19 @@ knockouts.forEach((item) => {
             const workArea =
                 knockout.closest(".work-area");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (!workArea || !cableMenu) return;
 
 
@@ -637,6 +729,140 @@ knockouts.forEach((item) => {
     });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   MOVABLE JUNCTION BOXES
+===================================================== */
+
+const electricalBoxes =
+    document.querySelectorAll(".electrical-box");
+
+electricalBoxes.forEach((box) => {
+
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+
+    box.addEventListener("mousedown", (event) => {
+
+        /* Do not drag when clicking a knockout */
+        if (event.target.closest(".knockout")) {
+            return;
+        }
+
+        dragging = true;
+
+        const boxRect =
+            box.getBoundingClientRect();
+
+        startX = event.clientX;
+        startY = event.clientY;
+
+        startLeft =
+            box.offsetLeft;
+
+        startTop =
+            box.offsetTop;
+
+        box.style.zIndex = "10";
+
+        event.preventDefault();
+
+    });
+
+
+    document.addEventListener("mousemove", (event) => {
+
+    if (!dragging) {
+        return;
+    }
+
+    const dx =
+        event.clientX - startX;
+
+    const dy =
+        event.clientY - startY;
+
+
+    box.style.left =
+        `${startLeft + dx}px`;
+
+    box.style.top =
+        `${startTop + dy}px`;
+
+
+    /* Update cables connected to this box */
+
+    document
+        .querySelectorAll(".installed-cable")
+        .forEach((cable) => {
+
+            if (
+                cable.knockout1 &&
+                cable.knockout1.closest(".electrical-box") === box
+            ) {
+
+                updateCablePosition(cable);
+
+            }
+
+            else if (
+                cable.knockout2 &&
+                cable.knockout2.closest(".electrical-box") === box
+            ) {
+
+                updateCablePosition(cable);
+
+            }
+
+        });
+
+});
+
+
+    document.addEventListener("mouseup", () => {
+
+        if (!dragging) {
+            return;
+        }
+
+        dragging = false;
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =====================================================
    CLICK WORK AREA TO CLOSE CABLE MENU
 ===================================================== */
@@ -657,6 +883,11 @@ knockouts.forEach((item) => {
             if (cableMenu) {
                 cableMenu.style.display = "none";
             }
+            /* Clear selected cable */
+if (selectedCable) {
+    selectedCable.classList.remove("cable-selected");
+    selectedCable = null;
+}
 
 
             /* Remove knockout highlight */
