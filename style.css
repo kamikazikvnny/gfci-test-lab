@@ -592,10 +592,9 @@ box-shadow: 0 0 0 3px #32c5ff;
     0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
-
 /* 14/2 PRINTING OVER COPPER */
 .installed-cable[class~="14-2-nmb"]::before {
-    content: "14/2    14/2    14/2    14/2    14/2    14/2";
+    content: var(--cable-label, "14/2");
     position: absolute;
     left: 0;
     top: 50%;
@@ -612,7 +611,6 @@ box-shadow: 0 0 0 3px #32c5ff;
     z-index: 3;
     pointer-events: none;
 }
-
 /* COPPER GROUNDING WIRE — HIDDEN */
 .installed-cable[class~="14-2-nmb"]::after {
     display: none;
@@ -636,10 +634,9 @@ box-shadow: 0 0 0 3px #32c5ff;
         0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
-
 /* 14/3 CABLE PRINTING */
 .installed-cable[class~="14-3-nmb"]::before {
-    content: "14/3    14/3    14/3    14/3    14/3    14/3";
+    content: var(--cable-label, "14/3");
     position: absolute;
     left: 0;
     top: 50%;
@@ -675,10 +672,9 @@ box-shadow: 0 0 0 3px #32c5ff;
         0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
-
 /* 12/2 CABLE PRINTING */
 .installed-cable[class~="12-2-nmb"]::before {
-    content: "12/2    12/2    12/2    12/2    12/2    12/2";
+    content: var(--cable-label, "12/2");
     position: absolute;
     left: 0;
     top: 50%;
@@ -714,10 +710,9 @@ box-shadow: 0 0 0 3px #32c5ff;
         0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
-
 /* 12/3 CABLE PRINTING */
 .installed-cable[class~="12-3-nmb"]::before {
-    content: "12/3    12/3    12/3    12/3    12/3    12/3";
+    content: var(--cable-label, "12/3");
     position: absolute;
     left: 0;
     top: 50%;
@@ -753,16 +748,9 @@ box-shadow: 0 0 0 3px #32c5ff;
         0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
-
-
-
-
-
-/* =========================================================
-   10/2 CABLE PRINTING
-========================================================= */
+/* 10/2 CABLE PRINTING */
 .installed-cable[class~="10-2-nmb"]::before {
-    content: "10/2    10/2    10/2    10/2    10/2    10/2";
+    content: var(--cable-label, "10/2");
     position: absolute;
     left: 0;
     top: 50%;
@@ -776,7 +764,6 @@ box-shadow: 0 0 0 3px #32c5ff;
     letter-spacing: 1px;
     line-height: 18px;
     text-shadow: none;
-
     z-index: 3;
     pointer-events: none;
 }
@@ -799,16 +786,9 @@ box-shadow: 0 0 0 3px #32c5ff;
         0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
-
-
-
-
-
-/* =========================================================
-   10/3 CABLE PRINTING
-========================================================= */
+/* 10/3 CABLE PRINTING */
 .installed-cable[class~="10-3-nmb"]::before {
-    content: "10/3    10/3    10/3    10/3    10/3    10/3";
+    content: var(--cable-label, "10/3");
     position: absolute;
     left: 0;
     top: 50%;
@@ -1188,3 +1168,31 @@ box-shadow: 0 0 0 3px #32c5ff;
 
 
 
+
+
+
+
+
+
+
+
+
+#cableLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.electrical-box {
+    z-index: 5;
+}
+
+.knockout {
+    z-index: 20;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.installed-cable {
+    pointer-events: auto;
+}
