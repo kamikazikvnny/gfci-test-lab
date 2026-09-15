@@ -1123,7 +1123,99 @@ electricalBoxes.forEach((box) => {
 
 });
 
+/* =====================================================
+   MOBILE TOUCH DRAGGING
+===================================================== */
 
+box.addEventListener("touchstart", (event) => {
+
+    if (event.target.closest(".knockout")) {
+        return;
+    }
+
+    const touch = event.touches[0];
+
+    dragging = true;
+
+    startX = touch.clientX;
+    startY = touch.clientY;
+
+    startLeft = box.offsetLeft;
+    startTop = box.offsetTop;
+
+    box.style.zIndex = "10";
+
+    event.preventDefault();
+
+}, { passive: false });
+
+
+box.addEventListener("touchmove", (event) => {
+
+    if (!dragging) {
+        return;
+    }
+
+    const touch = event.touches[0];
+
+    const dx =
+        touch.clientX - startX;
+
+    const dy =
+        touch.clientY - startY;
+
+
+    box.style.left =
+        `${startLeft + dx}px`;
+
+    box.style.top =
+        `${startTop + dy}px`;
+
+
+    /* Update cables connected to this box */
+
+    document
+        .querySelectorAll(".installed-cable")
+        .forEach((cable) => {
+
+            if (
+                cable.knockout1 &&
+                cable.knockout1.closest(".electrical-box") === box
+            ) {
+
+                updateCablePosition(cable);
+
+            }
+
+            else if (
+                cable.knockout2 &&
+                cable.knockout2.closest(".electrical-box") === box
+            ) {
+
+                updateCablePosition(cable);
+
+            }
+
+        });
+
+
+    event.preventDefault();
+
+}, { passive: false });
+
+
+box.addEventListener("touchend", () => {
+
+    dragging = false;
+
+});
+
+
+box.addEventListener("touchcancel", () => {
+
+    dragging = false;
+
+});
 
 
 
